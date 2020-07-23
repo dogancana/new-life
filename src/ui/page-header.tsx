@@ -5,7 +5,7 @@ import { theme } from "./theme";
 const Root = styled.header`
   height: 40px;
   background-color: white;
-  padding: ${theme.spacing};
+  padding: ${theme.spacing}px;
 `;
 
 export const PageHeader: React.FunctionComponent = () => <Root>New life</Root>;

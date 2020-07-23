@@ -7,7 +7,7 @@ const Content = styled.div`
   display: flex;
   flex: 1 1 0;
   flex-direction: column;
-  padding: ${theme.spacing};
+  padding: ${theme.spacing}px;
   background-color: ${theme.colors.halfGrey};
 `;
 
