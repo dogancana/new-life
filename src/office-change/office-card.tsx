@@ -38,7 +38,13 @@ const Content = styled.div`
   padding: ${theme.spacing / 2}px;
 
   h3 {
-    margin: 0;
+    margin: 0 0 5px 0;
+  }
+
+  p {
+    margin: 2px;
+    font-size: 12px;
+    line-height: 12px;
   }
 `;
 
@@ -60,6 +66,12 @@ export const OfficeCard: React.FunctionComponent<Props> = ({
         <Image src={office.picture} />
         <Content>
           <Header size="m">{office.city}</Header>
+          <p>{office.weather.description}</p>
+          <p>Average temperature: {office.weather.averageTemparature}C</p>
+          <p>
+            Average flights from your location:{" "}
+            {office.flights.averageTicketsFromCurrentOffice} Euros
+          </p>
         </Content>
       </Root>
     </Card>
