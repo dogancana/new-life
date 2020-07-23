@@ -10,6 +10,7 @@ const Root = styled.div`
 
 const Content = styled.div`
   max-width: 1024px;
+  width: 100%;
   display: flex;
   flex-direction: column;
 `;

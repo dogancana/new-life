@@ -1,7 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { PageHeader, Footer, GlobalStyles, theme } from "../ui";
-import { OfficeChangePage } from "../office-change";
+import { BrowserRouter, Redirect } from "react-router-dom";
+import { PrivateRoute } from "../auth";
+import { AuthProvider } from "../auth/provider";
+import { OfficeChangeFeature } from "../office-change";
 
 const Content = styled.div`
   display: flex;
@@ -14,12 +17,20 @@ const Content = styled.div`
 function App() {
   return (
     <React.Fragment>
-      <GlobalStyles />
-      <PageHeader />
-      <Content>
-        <OfficeChangePage />
-      </Content>
-      <Footer />
+      <AuthProvider>
+        <GlobalStyles />
+        <PageHeader />
+        <Content>
+          <BrowserRouter>
+            <Redirect path="/" to="/office-change" />
+            <PrivateRoute
+              path="/office-change"
+              component={OfficeChangeFeature}
+            />
+          </BrowserRouter>
+        </Content>
+        <Footer />
+      </AuthProvider>
     </React.Fragment>
   );
 }

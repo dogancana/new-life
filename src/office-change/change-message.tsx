@@ -1,9 +1,9 @@
 import React from "react";
-import { useAuth } from "../auth";
 import { Header } from "../ui/header";
+import { useAuthContext } from "../auth/provider";
 
 export const ChangeMessage: React.FunctionComponent = () => {
-  const { loggedIn, user } = useAuth();
+  const { loggedIn, user } = useAuthContext();
 
   if (!loggedIn) return null;
 

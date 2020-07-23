@@ -5,6 +5,7 @@ import { OfficeCard } from "./office-card";
 import styled from "styled-components";
 import { theme } from "../ui";
 import { Button } from "../ui/button";
+import { useHistory } from "react-router-dom";
 
 interface State {
   loading: boolean;
@@ -26,6 +27,7 @@ const ButtonWrapper = styled.div`
 
 export const OfficeSelector: React.FunctionComponent = () => {
   const [state, setState] = React.useState<State>({ loading: false });
+  const { push } = useHistory();
 
   useEffect(() => {
     loadOffices();
@@ -62,12 +64,22 @@ export const OfficeSelector: React.FunctionComponent = () => {
       ))}
       <Spacing />
       <ButtonWrapper>
-        <Button>Submit</Button>
+        <Button onClick={onSubmit} disabled={!state.selectedOffice}>
+          Submit
+        </Button>
       </ButtonWrapper>
     </React.Fragment>
   );
 
-  function onOfficeSelect(selectedOffice: Office) {
-    setState((p) => ({ ...p, selectedOffice }));
+  function onOfficeSelect(o: Office) {
+    setState((p) => ({
+      ...p,
+      selectedOffice: p.selectedOffice?.city !== o.city ? o : undefined,
+    }));
+  }
+
+  function onSubmit() {
+    if (!state.selectedOffice) return;
+    push(`./success/${state.selectedOffice.city}`);
   }
 };

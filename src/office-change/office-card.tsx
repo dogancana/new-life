@@ -14,7 +14,7 @@ interface Props {
 interface State {}
 
 const selectedStyle = css`
-  border-left: 5px solid ${theme.colors.green};
+  border-right: 5px solid ${theme.colors.green};
 `;
 const Root = styled.div`
   display: flex;
@@ -23,8 +23,8 @@ const Root = styled.div`
   width: 100%;
   cursor: pointer;
   position: relative;
-  border-left: 5px solid transparent;
-  transition: all .3s;
+  border-right: 5px solid transparent;
+  transition: all 0.3s;
 
   &:hover {
     left: -3px;
@@ -55,7 +55,7 @@ export const OfficeCard: React.FunctionComponent<Props> = ({
 }) => {
   if (!office) return null;
   return (
-    <Card>
+    <Card style={{ width: "100%" }}>
       <Root selected={!!selected} onClick={handleSelect}>
         <Image src={office.picture} />
         <Content>

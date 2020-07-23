@@ -18,8 +18,13 @@ const Root = styled.button`
     background-color: #078f3e;
     border-color: #078f3e;
   }
+
+  &:disabled {
+    background-color: grey;
+  }
 `;
 
-export const Button: React.FunctionComponent = ({ children, ...rest }) => (
-  <Root {...rest}>{children}</Root>
-);
+export const Button: React.FunctionComponent<Props> = ({
+  children,
+  ...rest
+}) => <Root {...rest}>{children}</Root>;
